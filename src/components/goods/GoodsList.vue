@@ -53,7 +53,6 @@ const getGoodsData = async (offset, limit, order, sort, page, pageSize) => {
           unit_of_goods: data.unit_of_good.name,
         })
       })
-      console.log(goodsData)
     }
     emits("disableSearch", false)
   })
