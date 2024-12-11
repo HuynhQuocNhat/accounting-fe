@@ -1,6 +1,6 @@
 <script setup>
 import Multiselect from "vue-multiselect";
-import {computed, inject, reactive, ref, watch} from "vue";
+import {inject, reactive, ref, watch} from "vue";
 import axios from "axios";
 
 const value = ref([])

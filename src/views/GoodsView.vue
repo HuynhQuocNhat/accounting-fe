@@ -2,7 +2,6 @@
 import SearchGoods from "@/components/goods/SearchGoods.vue";
 import GoodsList from "@/components/goods/GoodsList.vue";
 import {ref} from "vue";
-import {isDisabled} from "bootstrap/js/src/util/index.js";
 
 const searchParams = ref({})
 const searchTriggered = ref(false)

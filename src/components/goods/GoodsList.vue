@@ -1,6 +1,6 @@
 <script setup>
 import VueTableLite from "vue3-table-lite";
-import {computed, inject, onMounted, onUpdated, reactive, ref, watch} from "vue";
+import {computed, inject, reactive, ref, watch} from "vue";
 import axios from "axios";
 
 const props = defineProps({
@@ -17,9 +17,6 @@ const goodsData = ref([])
 const totalData = ref(0)
 const pageTable = ref(1)
 const pageSizeTable = ref(25)
-
-const showLoading = inject("showLoading")
-const hideLoading = inject("hideLoading")
 
 const getGoodsData = async (offset, limit, order, sort, page, pageSize) => {
   const pageParams = {
