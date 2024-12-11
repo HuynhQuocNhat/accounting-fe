@@ -16,7 +16,7 @@ const emits = defineEmits([
 const goodsData = ref([])
 const totalData = ref(0)
 const pageTable = ref(1)
-const pageSizeTable = ref(10)
+const pageSizeTable = ref(25)
 
 const showLoading = inject("showLoading")
 const hideLoading = inject("hideLoading")
@@ -53,6 +53,7 @@ const getGoodsData = async (offset, limit, order, sort, page, pageSize) => {
           unit_of_goods: data.unit_of_good.name,
         })
       })
+      console.log(goodsData)
     }
     emits("disableSearch", false)
   })
@@ -85,10 +86,6 @@ const table = reactive({
     return goodsData.value
   }),
   pageOptions: [
-    {
-      value: 10,
-      text: 10,
-    },
     {
       value: 25,
       text: 25,
@@ -139,7 +136,7 @@ getGoodsData()
 watch(() => props.searchTriggered, () => {
   if (props.searchTriggered) {
     getGoodsData()
-    pageSizeTable.value = 10
+    pageSizeTable.value = 25
     pageTable.value = 1
     emits("resetSearchTrigger")
   }
@@ -170,7 +167,7 @@ watch(() => props.searchTriggered, () => {
 }
 
 table.vtl-table {
-  max-height: 541px;
+  max-height: 700px;
   overflow-y: auto;
 }
 
