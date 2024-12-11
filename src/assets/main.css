@@ -1,0 +1,163 @@
+@import './base.css';
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+a {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  border: 0;
+}
+
+.container {
+  align-items: flex-start;
+  display: flex;
+  max-width: 100% !important;
+  padding-left: 0 !important;;
+  padding-right: 0 !important;;
+}
+
+.drop-down {
+  text-align: left;
+  display: inline-block;
+  height: 50px;
+  grid-column-gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.input-box {
+  width: 250px;
+  height: 45px;
+  background-color: #fff;
+  border: 1px solid #e2e3e9;
+  border-radius: 13px;
+  box-shadow: 0 1px 3px rgba(143, 147, 163, .6);
+  padding-left: 25px;
+  padding-right: 25px;
+  text-decoration: none;
+}
+
+.text-form {
+  font-size: 16px;
+  color: #222;
+  font-weight: normal;
+}
+
+#app {
+  width: 100%;
+}
+
+.button {
+  background-color: #ab987a;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .2s;
+  color: #fff;
+  line-height: inherit;
+  cursor: pointer;
+  border: 0;
+  padding: 9px 15px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #c8bca9;
+  outline: 0;
+}
+
+.button:disabled {
+  border-style: outset;
+  background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3)) !important;
+  color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+  border-color: light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
+  cursor: default;
+}
+
+select option {
+  color: #616a73;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  transition: background-color .2s;
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.add-button {
+  background: #3b71ca !important;
+  border: none !important;
+}
+
+.add-button:hover:enabled {
+  background: #3b71caad !important;
+}
+
+.update-button {
+  background: rgba(93, 33, 210, .8) !important;
+  border: none !important;;
+}
+
+.update-button:hover {
+  background: rgba(93, 33, 210, 0.51) !important;
+}
+
+.delete-button {
+  background: rgb(243, 73, 44) !important;
+  border: none !important;;
+}
+
+.delete-button:hover {
+  background: rgba(243, 73, 44, 0.71) !important;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.form-title {
+  position: absolute;
+  top: -20px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: white;
+  display: inline-table;
+  padding: 0 20px;
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+}
