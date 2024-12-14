@@ -1,13 +1,16 @@
 <script setup>
-
-import {ref} from "vue";
+import {computed, ref} from "vue";
+import {useRoute} from "vue-router";
 
 const isShowGoodsListMenu = ref(false)
 
+const route = useRoute()
+
+const routeName = computed(() => route.name)
 </script>
 
 <template>
-  <div data-w-id="cf8eb039-eaca-b0a6-dcaf-08283701695e" class="nav" style="">
+  <div data-w-id="cf8eb039-eaca-b0a6-dcaf-08283701695e" class="nav">
     <div class="nav-top">
       <a href="#" class="logo-link w-inline-block">
         <img src="https://assets.website-files.com/63f8cab8b05eed26ffbbdebc/63f8d04370cba89197e76fb0_logo.svg"
@@ -15,7 +18,11 @@ const isShowGoodsListMenu = ref(false)
       <div class="nav-separator"></div>
       <div class="nav-menu">
         <div @mouseover="isShowGoodsListMenu = true" @mouseleave="isShowGoodsListMenu = false" class="goods-menu">
-          <a :class="isShowGoodsListMenu ? 'w--current' : ''" href="http://localhost:5173/" aria-current="page" class="nav-link w-inline-block">
+          <a
+            :class="isShowGoodsListMenu || ['goods', 'addGoods'].includes(routeName) ? 'w--current' : ''"
+            class="nav-link w-inline-block"
+            :aria-current="isShowGoodsListMenu || ['goods', 'addGoods'].includes(routeName) ? 'page' : ''"
+            href="http://localhost:5173/" >
             <div class="embed-icon w-embed">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-fill" viewBox="0 0 16 16">
                 <path d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223"/>
@@ -27,8 +34,13 @@ const isShowGoodsListMenu = ref(false)
             <div class="nav-link_text">Hàng Hóa</div>
           </a>
 
-          <div v-if="isShowGoodsListMenu" class="child-goods-menu">
-            <a href="http://localhost:5173/" class="nav-link w-inline-block">
+          <div v-if="isShowGoodsListMenu || ['goods', 'addGoods'].includes(routeName)" class="child-goods-menu">
+            <router-link
+              tag="a"
+              :class="routeName === 'goods' ? 'w--current' : ''"
+              class="nav-link w-inline-block"
+              :to="{ name: 'goods' }"
+            >
               <div class="embed-icon w-embed">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-stars" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5"/>
@@ -36,9 +48,13 @@ const isShowGoodsListMenu = ref(false)
                 </svg>
               </div>
               <div class="nav-link_text">Danh Sách Hàng</div>
-            </a>
-
-            <a href="http://localhost:5173/add-good" class="nav-link w-inline-block">
+            </router-link>
+            <router-link
+              tag="a"
+              :class="routeName === 'addGoods' ? 'w--current' : ''"
+              class="nav-link w-inline-block"
+              :to="{ name: 'addGoods' }"
+            >
               <div class="embed-icon w-embed">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-fill-add" viewBox="0 0 16 16">
                   <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0M8 1c-1.573 0-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4s.875 1.755 1.904 2.223C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777C13.125 5.755 14 5.007 14 4s-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1"/>
@@ -46,7 +62,7 @@ const isShowGoodsListMenu = ref(false)
                 </svg>
               </div>
               <div class="nav-link_text">Thêm Hàng Mới</div>
-            </a>
+            </router-link>
 
           </div>
         </div>

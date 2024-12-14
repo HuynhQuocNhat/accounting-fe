@@ -1,20 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AddGoodsView from "@/views/AddGoodsView.vue";
-import GoodsView from "@/views/GoodsView.vue";
+import GoodsView from "@/views/goods/GoodsView.vue";
+import Goods from "@/components/goods/Goods.vue";
+import AddGoods from "@/components/goods/AddGoods.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/add-good',
-      name: 'addGood',
-      component: AddGoodsView,
-    },
-    {
-      path: '/good',
-      name: 'home',
-      alias: '/',
+      path: '/',
+      alias: '/goods',
+      name: 'goodsView',
       component: GoodsView,
+      children: [
+        {
+          path: '',
+          name: 'goods',
+          component: Goods
+        },
+        {
+          path: 'add-goods',
+          name: 'addGoods',
+          component: AddGoods
+        }
+      ]
     },
     // {
     //   path: '/about',
