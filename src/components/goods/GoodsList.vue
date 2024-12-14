@@ -1,6 +1,6 @@
 <script setup>
 import VueTableLite from "vue3-table-lite";
-import {computed, inject, onMounted, onUpdated, reactive, ref, watch} from "vue";
+import {computed, inject, reactive, ref, watch} from "vue";
 import axios from "axios";
 
 const props = defineProps({
@@ -16,10 +16,7 @@ const emits = defineEmits([
 const goodsData = ref([])
 const totalData = ref(0)
 const pageTable = ref(1)
-const pageSizeTable = ref(10)
-
-const showLoading = inject("showLoading")
-const hideLoading = inject("hideLoading")
+const pageSizeTable = ref(25)
 
 const getGoodsData = async (offset, limit, order, sort, page, pageSize) => {
   const pageParams = {
@@ -86,10 +83,6 @@ const table = reactive({
   }),
   pageOptions: [
     {
-      value: 10,
-      text: 10,
-    },
-    {
       value: 25,
       text: 25,
     },
@@ -139,7 +132,7 @@ getGoodsData()
 watch(() => props.searchTriggered, () => {
   if (props.searchTriggered) {
     getGoodsData()
-    pageSizeTable.value = 10
+    pageSizeTable.value = 25
     pageTable.value = 1
     emits("resetSearchTrigger")
   }
@@ -170,7 +163,7 @@ watch(() => props.searchTriggered, () => {
 }
 
 table.vtl-table {
-  max-height: 541px;
+  max-height: 700px;
   overflow-y: auto;
 }
 
