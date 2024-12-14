@@ -41,7 +41,8 @@ const addUnitOfGood = async () => {
     method: "POST",
     url: 'http://127.0.0.1/api/v1/goods/unit-of-goods',
     data: {unit: {...[unitOfGoodData.newName]}}
-  }).then(async (res) => {
+  }).then(
+    (res) => {
     emits("getUnitOfGoodData");
     showAlert("success", `Đã thêm ĐVT ${unitOfGoodData.newName} thành công!`)
     hideLoading()
