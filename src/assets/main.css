@@ -134,7 +134,7 @@ select option {
   border: none !important;;
 }
 
-.delete-button:hover {
+.delete-button:hover:enabled {
   background: rgba(243, 73, 44, 0.71) !important;
 }
 
