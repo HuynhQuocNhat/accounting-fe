@@ -22,7 +22,7 @@ const routeName = computed(() => route.name)
             :class="isShowGoodsListMenu || ['goods', 'addGoods'].includes(routeName) ? 'w--current' : ''"
             class="nav-link w-inline-block"
             :aria-current="isShowGoodsListMenu || ['goods', 'addGoods'].includes(routeName) ? 'page' : ''"
-            href="http://localhost:5173/" >
+            href="http://localhost:5174/" >
             <div class="embed-icon w-embed">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-fill" viewBox="0 0 16 16">
                 <path d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223"/>

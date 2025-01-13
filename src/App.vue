@@ -37,7 +37,7 @@ provide("setAlertMessage", setAlertMessage);
 </script>
 
 <template>
-<!--  <LoadingView v-if="isLoading"/>-->
+  <LoadingView v-if="isLoading"/>
   <RouterView />
 </template>
 
