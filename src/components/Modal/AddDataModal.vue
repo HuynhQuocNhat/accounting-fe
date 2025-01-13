@@ -4,15 +4,23 @@ import {computed, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref, watch}
 
 const props = defineProps({
   modal: Object,
+  isSlot: {
+    type: Boolean,
+    default: false
+  },
+  isShowOk: {
+    type: Boolean,
+    default: true
+  }
 })
 
 const className = ref('')
 const buttonText = ref('OK')
 
-const emit = defineEmits(['handleUnitOfGoodData'])
+const emit = defineEmits(['okEvent'])
 
 const okEvent = () => {
-  emit("handleUnitOfGoodData");
+  emit("okEvent");
 }
 
 onBeforeUpdate(() => {
@@ -40,11 +48,22 @@ onBeforeUpdate(() => {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          {{ props.modal.content }}
+          <template v-if="props.isSlot">
+            <slot name="modal-content"></slot>
+          </template>
+          <template v-else>
+            <template v-if="typeof props.modal.content === 'object'">
+              <p v-for="(content, index) in props.modal.content" :key="index">{{ Array.isArray(content) ? content[0] : content }}</p>
+            </template>
+
+            <template v-else>
+              {{ props.modal.content }}
+            </template>
+          </template>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary"
+          <button v-if="isShowOk" type="button" class="btn btn-primary"
                   :class="className"
                   @click="okEvent">
             {{ buttonText }}

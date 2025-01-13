@@ -179,7 +179,7 @@ const showAlert = (type, message) => {
       </div>
     </div>
   </form>
-  <add-data-modal :modal="modalObj" @handle-unit-of-good-data="handleUnitOfGoodData"/>
+  <add-data-modal :modal="modalObj" @ok-event="handleUnitOfGoodData"/>
 </template>
 
 <style scoped>
